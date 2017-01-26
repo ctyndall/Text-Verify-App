@@ -29,7 +29,7 @@ def register():
         if res == "fail":
             return render_template("register.html", message="Oops! Something went wrong on our end.  Please try again.")
         return ('', 204)
-        #return(render_template("verify.html", phone_number=to_number))
+    
 
 @app.route("/register-verify", methods=['POST'])
 def verify_register():
@@ -44,6 +44,7 @@ def verify_register():
             helpers.remove_user(number)  # user only gets one try to validate pin.  Otherwise, retry.
             return (render_template('register.html', message="Incorrect PIN.  Please register again."))
 
+        
 @app.route("/retrieve", methods=['GET', 'POST'])
 def retrieve():
     if request.method == 'GET':
@@ -65,6 +66,7 @@ def retrieve():
             return render_template("retrieve.html", message="Oops! Something went wrong on our end.  Please try again.")
         return ('', 204)
 
+    
 @app.route("/verify-retrieve", methods=['POST'])
 def verify_retrieve():
         print request.form
@@ -77,6 +79,7 @@ def verify_retrieve():
         else:
             return(render_template("retrieve.html", message="Incorrect PIN.  Please retrieve another."))
 
+        
 if __name__ == "__main__":
     if not os.path.exists(database_setup.DB_FILENAME):
         database_setup.setup_database()
