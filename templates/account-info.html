@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="container">
+	<h2>Account Information</h2>
+	<table class="table table-bordered" id="accountInfoTable">
+		<tbody>
+			<tr>
+				<td> Mobile Number: </td>
+				<td> {{data[0].phone_number}} </td>
+			</tr>
+			<tr>
+				<td> Name: </td>
+				<td> {{data[0].name}} </td>
+			</tr>			
+			<tr>
+				<td> Course: </td>
+				<td> {{data[0].course}} </td>
+			</tr>
+</div>
+{% endblock %}

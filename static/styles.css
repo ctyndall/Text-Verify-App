@@ -1,0 +1,17 @@
+#register-container{
+	width: 50%;
+}
+
+ #verify-container {
+ 	width: 50%;
+ }
+ 
+ #accountInfoTable {
+ 	width:50%;
+ }
+ 
+ #message {
+ 	color:#a94442;
+ 	float:right;
+ }
+

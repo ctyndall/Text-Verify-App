@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block body %}
+<script>
+  $("#retrieve-link").addClass("active");
+  // $("#register-link").removeClass("active");
+</script>
+
+<div class='container'>
+  <div id="register-container">
+    <form action='retrieve' method="post" id="retrieveForm">
+      <div class="form-group">
+        <label for="mobile-number">Mobile Number:</label>
+        <input type="tel" name="mobile-number" class="form-control" id="mobile-number">
+      </div>
+      <input type="submit" class="btn btn-default">
+    </form>
+
+    <form action="verify-retrieve" method="post" id="verifyForm">
+      <div class="form-group">
+        <input type="hidden" name="mobile-number" class="form-control" id="number" hidden disabled>
+      </div>
+      <div class="form-group">
+        <label for="pin">Enter 6-Digit Pin:</label>
+        <input name="pin" class="form-control" id="pin" disabled>
+      </div>
+      <input type="submit" class="btn btn-default" disabled>
+    </form>
+    <text id=message>{{message}}</text>
+  </div>
+</div>
+
+<script>
+  $("#retrieveForm").submit(function(event){
+    $("#retrieveForm input").prop('readonly', true);
+    $("#retrieveForm input[type=submit]").prop('disabled', true);
+    $("#verifyForm input").removeAttr('disabled');
+    $("#number").val($("#mobile-number").val());
+    $("#message").remove();
+  })
+</script>
+{% endblock %}
